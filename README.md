@@ -29,12 +29,10 @@ http://localhost:4200
 - Display data using Angular Material table
 - Search functionality with RxJS (debounceTime)
 - Pagination using Material paginator
-- User details page with routing
-- Clickable table rows to navigate to details
-- Global HTTP interceptor for:
-Loader (spinner)
-Error handling (Snackbar messages)
-- Responsive layout with toolbar and container
+- Clickable table rows to navigate to user details page
+- common HTTP interceptor for:
+    -Loader (spinner)
+    -Error handling (Snackbar messages)
 - Wildcard route handling (redirect invalid URLs to home)
 
 # Note
