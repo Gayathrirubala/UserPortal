@@ -1,0 +1,70 @@
+<section class="user-section">
+
+    <!-- Search -->
+     <mat-card class="matcard">
+      <p class="title">Welcome !, User List</p>
+       <div class="search-container">
+        <mat-form-field appearance="outline" class="searchForm">
+          <mat-label>Search by Name or Email</mat-label>
+          <input matInput [formControl]="search" placeholder="Search by Name or Email">
+        </mat-form-field>
+      </div>
+     </mat-card>
+   
+
+    <!-- Error -->
+    <div *ngIf="error" class="errorMsg">{{ error }}</div>
+
+    <!-- Table -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element" class="user-info" (click)="viewDetails(element)">{{ element.name }} </td>
+      </ng-container>
+
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Contact -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Contact</th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
+
+      <!-- Company -->
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef>Company</th>
+        <td mat-cell *matCellDef="let element">{{ element.company?.name }}</td>
+      </ng-container>
+
+      <!-- Header & Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr 
+          mat-row
+          *matRowDef="let row; columns: displayedColumns;"
+          >
+      </tr>
+
+    </table>
+
+    <p *ngIf="userListData.length === 0" class="errorMsg">
+      No records found
+    </p>
+
+    <!-- Pagination -->
+    <ng-container *ngIf="userListData.length > 0">
+    <mat-paginator [pageSize]="5"></mat-paginator>
+    </ng-container>
+
+</section>
